@@ -52,6 +52,8 @@ wget -O- -q https://raw.githubusercontent.com/nidus-lab/devops/main/k8s/helm-val
 
 Exec into K8s Pod and run code from https://cloud.google.com/sdk/docs/install#linux
 
+
+
 ## Creating the Template
 
 ```bash
