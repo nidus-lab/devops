@@ -45,3 +45,15 @@ wget -O- -q https://raw.githubusercontent.com/nidus-lab/devops/main/k8s/helm-val
 | envsubst \
 | helm upgrade coder coder-v2/coder --namespace coder --values -
 ```
+
+# Using GCP Templates
+
+## Giving Permissions
+
+Exec into K8s Pod and run code from https://cloud.google.com/sdk/docs/install#linux
+
+## Creating the Template
+
+```bash
+coder template create -v project_id=nidus-397516
+```
