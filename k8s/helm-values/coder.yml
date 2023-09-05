@@ -115,3 +115,5 @@ coder:
     runAsNonRoot: false
     privileged: true
     allowPrivilegeEscalation: true
+    runAsUser: 0
+    runAsGroup: 0
