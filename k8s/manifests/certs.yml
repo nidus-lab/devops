@@ -3,7 +3,37 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: ${DOMAIN_NAME}
+  namespace: coder
+spec:
+  secretName: ${DOMAIN_NAME}-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  dnsNames:
+    - "*.${DOMAIN}"
+    - "${DOMAIN}"
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ${DOMAIN_NAME}
   namespace: default
+spec:
+  secretName: ${DOMAIN_NAME}-tls
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  dnsNames:
+    - "*.${DOMAIN}"
+    - "${DOMAIN}"
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ${DOMAIN_NAME}
+  namespace: kube-system
 spec:
   secretName: ${DOMAIN_NAME}-tls
   issuerRef:
