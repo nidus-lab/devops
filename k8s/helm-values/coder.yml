@@ -102,11 +102,7 @@ coder:
       secretName: "nidus-tls"
 
   securityContext:
-    # coder.securityContext.runAsNonRoot -- Requires that the coder container
-    # runs as an unprivileged user. If setting runAsUser to 0 (root), this
-    # will need to be set to false.
     runAsNonRoot: false
-    # privileged: true
     allowPrivilegeEscalation: false
     runAsUser: 0
     runAsGroup: 0

@@ -52,7 +52,14 @@ wget -O- -q https://raw.githubusercontent.com/nidus-lab/devops/main/k8s/helm-val
 
 Exec into K8s Pod and run code from https://cloud.google.com/sdk/docs/install#linux
 
+```bash
+apk add python3
+curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-444.0.0-linux-x86_64.tar.gz
+tar -xf google-cloud-cli-444.0.0-linux-x86_64.tar.gz
+./google-cloud-sdk/install.sh
 
+./google-cloud-sdk/bin/gcloud auth login
+```
 
 ## Creating the Template
 
