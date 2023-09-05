@@ -58,7 +58,8 @@ curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-
 tar -xf google-cloud-cli-444.0.0-linux-x86_64.tar.gz
 ./google-cloud-sdk/install.sh
 
-./google-cloud-sdk/bin/gcloud auth login
+# Login and Back.
+gcloud auth application-default login
 ```
 
 ## Creating the Template
