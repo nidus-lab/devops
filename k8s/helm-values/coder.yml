@@ -101,19 +101,12 @@ coder:
       # coder.ingress.tls.secretName -- The name of the TLS secret to use.
       secretName: "nidus-tls"
 
-
-      securityContext:
-        privileged: true
-        runAsNonRoot: false
-        readOnlyRootFilesystem: false
-        allowPrivilegeEscalation: true
-
-  securityContext:
-    # coder.securityContext.runAsNonRoot -- Requires that the coder container
-    # runs as an unprivileged user. If setting runAsUser to 0 (root), this
-    # will need to be set to false.
-    runAsNonRoot: false
-    privileged: true
-    allowPrivilegeEscalation: true
-    runAsUser: 0
-    runAsGroup: 0
+  # securityContext:
+  #   # coder.securityContext.runAsNonRoot -- Requires that the coder container
+  #   # runs as an unprivileged user. If setting runAsUser to 0 (root), this
+  #   # will need to be set to false.
+  #   runAsNonRoot: false
+  #   privileged: true
+  #   allowPrivilegeEscalation: true
+  #   runAsUser: 0
+  #   runAsGroup: 0
