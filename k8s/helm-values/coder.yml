@@ -93,6 +93,7 @@ coder:
     annotations:
       kubernetes.io/ingress.class: traefik
       traefik.ingress.kubernetes.io/router.middlewares: default-redirect-https@kubernetescrd
+      certmanager.k8s.io/cluster-issuer: letsencrypt-production
     # coder.ingress.tls -- The TLS configuration to use for the Ingress.
     tls:
       # coder.ingress.tls.enable -- Whether to enable TLS on the Ingress.
