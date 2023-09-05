@@ -17,7 +17,31 @@ export EMAIL=adam.mcarthur62@gmail.com
 And you only need to install one set of certs. I.e
 
 ```bash
-wget -O- -q https://raw.githubusercontent.com/nidus-lab/devops/main/k8s/manifests/certs.yaml \
+wget -O- -q https://raw.githubusercontent.com/nidus-lab/devops/main/k8s/manifests/certs.yml \
 | envsubst \
 | kubectl apply -f -
+```
+
+## Setting up Github and Git Auth
+
+You can get help with this from https://github.com/Sharpz7/Sharpz7/tree/main/docs/kubernetes.md
+
+## Installing Coder
+
+Again, you can follow https://github.com/Sharpz7/Sharpz7/tree/main/docs/kubernetes.md, but change the value you install
+to the one in this repo. I.e
+
+```bash
+wget -O- -q https://raw.githubusercontent.com/nidus-lab/devops/main/k8s/helm-values/coder.yml \
+| envsubst \
+| helm install coder coder-v2/coder --namespace coder --values -
+```
+
+And upgrade with
+
+```bash
+helm repo update
+wget -O- -q https://raw.githubusercontent.com/nidus-lab/devops/main/k8s/helm-values/coder.yml \
+| envsubst \
+| helm upgrade coder coder-v2/coder --namespace coder --values -
 ```
