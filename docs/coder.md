@@ -64,5 +64,5 @@ tar -xf google-cloud-cli-444.0.0-linux-x86_64.tar.gz
 ## Creating the Template
 
 ```bash
-coder template create -v project_id=nidus-397516
+coder template create --variable project_id=nidus-397516
 ```
