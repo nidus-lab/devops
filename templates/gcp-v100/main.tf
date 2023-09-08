@@ -184,16 +184,16 @@ resource "coder_agent" "main" {
     curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
     filebrowser -p 8070 --noauth --root /home/coder/data >/tmp/filebrowser.log 2>&1 &
 
-    mkdir -p /tmp/code-server
-    HASH=$(curl https://update.code.visualstudio.com/api/commits/stable/server-linux-x64-web | cut -d '"' -f 2)
-    wget -O- https://az764295.vo.msecnd.net/stable/$HASH/vscode-server-linux-x64-web.tar.gz | tar -xz -C /tmp/code-server --strip-components=1 >/dev/null 2>&1
+    mkdir -p ~/.coder-vscode
+    curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output vscode_cli.tar.gz
+    tar -xf vscode_cli.tar.gz -C ~/.coder-vscode
 
     if [ -n "$DOTFILES_URI" ]; then
       echo "Installing dotfiles from $DOTFILES_URI"
       coder dotfiles -y "$DOTFILES_URI"
     fi
 
-    /tmp/code-server/bin/code-server --accept-server-license-terms serve-local --without-connection-token --telemetry-level off >/dev/null 2>&1 &
+    ~/.coder-vscode/code serve-web --log trace --verbose --accept-server-license-terms --without-connection-token --port 8000 --host 0.0.0.0 >/tmp/vscode.log 2>&1 &
   EOT
 
   env = {

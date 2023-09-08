@@ -14,6 +14,26 @@ export DOMAIN_NAME=nidus
 export EMAIL=adam.mcarthur62@gmail.com
 ```
 
+## ISAIC Fixes
+
+```bash
+sudo mkdir /sys/fs/cgroup/systemd
+sudo mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd
+
+sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
+sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+
+sudo hostnamectl set-hostname sub.domain.com
+
+# Changes in file /etc/hosts
+127.0.1.1 sub.domain.com sub
+
+external.ip.xx.xx sub.domain.com sub
+
+# After creation
+kubectl annotate node isaic.mcaq.me --overwrite flannel.alpha.coreos.com/public-ip=129.128.215.164
+```
+
 And you only need to install one set of certs. I.e
 
 ```bash
