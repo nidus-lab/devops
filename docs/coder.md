@@ -82,6 +82,11 @@ tar -xf google-cloud-cli-444.0.0-linux-x86_64.tar.gz
 gcloud auth application-default login
 ```
 
+Sometimes you might need to run this to get it working
+```bash
+apt-get install linux-headers-`uname-r` build-essential
+```
+
 ## Creating the Template
 
 ```bash

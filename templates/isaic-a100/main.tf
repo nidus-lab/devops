@@ -26,7 +26,7 @@ provider "coder" {
 }
 provider "kubernetes" {
   # Authenticate via ~/.kube/config or a Coder-specific ServiceAccount, depending on admin preferences
-  config_path = local.use_kubeconfig == true ? "~/.kube/config" : null
+  config_path = "/coder/isaic.kubeconfig"
 }
 
 
@@ -69,7 +69,7 @@ data "coder_parameter" "image" {
   name         = "container_image"
   display_name = "Container Image"
   description = "What container image and language do you want?"
-  default      = "sharp6292/coder-base:latest"
+  default      = "sharp6292/coder-gpu"
   type         = "string"
   mutable      = true
   icon        = "https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png"
@@ -272,11 +272,14 @@ resource "kubernetes_pod" "main" {
 
       resources {
         requests = {
-          "cpu"    = "1"
-          "memory" = "1Gi"
+          "nvidia.com/mig-2g.20gb" = "1"
+          "cpu"    = "4"
+          "memory" = "28Gi"
         }
         limits = {
-          "nvidia.com/gpu" = "1"
+          "nvidia.com/mig-2g.20gb" = "1"
+          "cpu"    = "4"
+          "memory" = "28Gi"
         }
       }
     }
